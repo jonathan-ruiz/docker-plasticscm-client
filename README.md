@@ -21,7 +21,7 @@ This Docker image provides a ready-to-use environment for running Plastic SCM Cl
 
 Remember to replace [your plastic project directory] with the loacal path to the directory where your plastic projects are stored
    ```
-   docker run --privileged --network host --rm -it -v [your plastic projects directory]:/root/Projects -v ~/.plastic4:/root/.plastic4 -v /tmp/.X11-unix:/tmp/.X11-unix -e XAUTH_TOKEN="$(xauth list)" -e DISPLAY=:0 jonathanruiz3/plastic-client sh -c 'xauth add $XAUTH_TOKEN && plasticgui'
+   docker run --privileged --network host --rm -it -v [your plastic projects directory]:/root/Projects -v $HOME/.Xauthority:/root/.Xauthority -v ~/.plastic4:/root/.plastic4 -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY jonathanruiz3/plastic-client sh -c 'plasticgui'
    ```
 
    **Note:** Ensure that you have Docker installed and configured on your system before using this image.
